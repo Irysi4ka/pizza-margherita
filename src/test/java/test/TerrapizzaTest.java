@@ -12,20 +12,17 @@ public class TerrapizzaTest extends AbstractTest {
     PizzaPage pizzaPage;
     BarPage barPage;
 
-    private final String pizzaName = "Пицца Маргарита";
+    private final String pizzaName = "Маргарита";
     private final String drinkName = "Имбирь-клюква";
 
     @Test
-    public void testAddPizzaToCart() throws InterruptedException {
+    public void testAddPizzaToCart() {
         homePage = new HomePage(driver)
                 .openPage()
                 .clickButtonMenuPizza();
 
-
-         pizzaPage = new PizzaPage(driver)
-                .clickButtonAddPizzaToCart()
-                .clickButtonOrder()
-                .clickCloseButtonOrderOpened();
+        pizzaPage = new PizzaPage(driver)
+                .clickButtonAddPizzaToCart();
 
         homePage
                 .clickButtonMenuBar();
@@ -36,7 +33,6 @@ public class TerrapizzaTest extends AbstractTest {
 
         assertTrue(pizzaPage.isPizzaInCart(pizzaName));
         assertTrue(barPage.isDrinkInCart(drinkName));
-        //Thread.sleep(5000);
 
     }
 }

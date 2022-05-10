@@ -9,7 +9,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
 
-public class PizzaPage extends AbstractPage{
+public class PizzaPage extends AbstractPage {
 
     @FindBy(xpath = "//div[@class='cart-button']/button[@data-id='364']")
     private WebElement buttonAddPizzaToCart;
@@ -25,27 +25,19 @@ public class PizzaPage extends AbstractPage{
         PageFactory.initElements(driver, this);
     }
 
-    public PizzaPage clickButtonAddPizzaToCart(){
+    public PizzaPage clickButtonAddPizzaToCart() {
         buttonAddPizzaToCart.click();
         return this;
     }
 
-    public boolean isPizzaInCart(String pizzaName){
+    public boolean isPizzaInCart(String pizzaName) {
         return labelPizza.getText().contains(pizzaName);
     }
 
-    public PizzaPage clickButtonOrder(){
+    public PizzaPage clickButtonOrder() {
         new WebDriverWait(driver, Duration.ofSeconds(WAIT_TIMEOUT_SECONDS))
                 .until(ExpectedConditions.elementToBeClickable(buttonOrder))
                 .click();
         return this;
     }
-
-    public PizzaPage clickCloseButtonOrderOpened(){
-        new WebDriverWait(driver, Duration.ofSeconds(WAIT_TIMEOUT_SECONDS))
-                .until(ExpectedConditions.elementToBeClickable(buttonOrderOpened))
-                .click();
-        return this;
-    }
-
 }
