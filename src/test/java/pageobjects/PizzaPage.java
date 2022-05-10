@@ -15,8 +15,10 @@ public class PizzaPage extends AbstractPage{
     private WebElement buttonAddPizzaToCart;
     @FindBy(xpath = "//div[@class='basket__btn-top basket__top basket__btn-top--sm']")
     private WebElement buttonOrder;
-    @FindBy(xpath = "//div[@class='basket__products-item-name']")
+    @FindBy(xpath = "//li[@id='basket-el-0']//div[@class='basket__products-item-name']")
     private WebElement labelPizza;
+    @FindBy(xpath = "//div[@id='basket-btn']")
+    private WebElement buttonOrderOpened;
 
     public PizzaPage(WebDriver driver) {
         super(driver);
@@ -35,6 +37,13 @@ public class PizzaPage extends AbstractPage{
     public PizzaPage clickButtonOrder(){
         new WebDriverWait(driver, Duration.ofSeconds(WAIT_TIMEOUT_SECONDS))
                 .until(ExpectedConditions.elementToBeClickable(buttonOrder))
+                .click();
+        return this;
+    }
+
+    public PizzaPage clickCloseButtonOrderOpened(){
+        new WebDriverWait(driver, Duration.ofSeconds(WAIT_TIMEOUT_SECONDS))
+                .until(ExpectedConditions.elementToBeClickable(buttonOrderOpened))
                 .click();
         return this;
     }

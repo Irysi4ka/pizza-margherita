@@ -7,8 +7,11 @@ import org.openqa.selenium.support.PageFactory;
 
 public class HomePage extends AbstractPage {
 
-    @FindBy(xpath = "//li[@class='menu-navigation__item'][3]")
+    @FindBy(xpath = "//li[@class='menu-navigation__item']/a[@href='/menu/cat/picca']")
     private WebElement buttonMenuPizza;
+
+    @FindBy(xpath = "//li[@class='menu-navigation__item']/a[@href='/menu/cat/bar']")
+    private WebElement buttonMenuBar;
 
     public HomePage(WebDriver driver) {
         super(driver);
@@ -22,6 +25,11 @@ public class HomePage extends AbstractPage {
 
     public HomePage clickButtonMenuPizza(){
         buttonMenuPizza.click();
+        return this;
+    }
+
+    public HomePage clickButtonMenuBar(){
+        buttonMenuBar.click();
         return this;
     }
 }
