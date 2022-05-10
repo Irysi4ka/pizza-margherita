@@ -11,7 +11,8 @@ public class TerrapizzaTest extends AbstractTest {
     HomePage homePage;
     PizzaPage pizzaPage;
     BarPage barPage;
-    private final String pizzaName = "Маргарита";
+
+    private final String pizzaName = "Пицца Маргарита";
     private final String drinkName = "Имбирь-клюква";
 
     @Test
@@ -21,7 +22,7 @@ public class TerrapizzaTest extends AbstractTest {
                 .clickButtonMenuPizza();
 
 
-        pizzaPage = new PizzaPage(driver)
+         pizzaPage = new PizzaPage(driver)
                 .clickButtonAddPizzaToCart()
                 .clickButtonOrder()
                 .clickCloseButtonOrderOpened();
@@ -33,9 +34,9 @@ public class TerrapizzaTest extends AbstractTest {
                 .clickButtonAddDrinkToCart()
                 .clickButtonOrder();
 
-        assertTrue(barPage.isDrinkInCart(drinkName));
         assertTrue(pizzaPage.isPizzaInCart(pizzaName));
+        assertTrue(barPage.isDrinkInCart(drinkName));
+        //Thread.sleep(5000);
 
-        Thread.sleep(5000);
     }
 }
